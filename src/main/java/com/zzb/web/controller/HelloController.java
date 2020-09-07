@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 
 /**
  * @author :zzb
@@ -18,7 +19,7 @@ public class HelloController {
 
     @RequestMapping("/")
     public String hello(HttpServletRequest request){
-        log.info("请求开始时间》》》》》》》》》》》》》》》》》》》》》》》》：" + System.currentTimeMillis());
+        log.info("请求开始时间》》》》》》》》》》》》》》》》》》》》》》》》：" + LocalDateTime.now());
         log.info("请求IP 》》》》》》》》》》》》》》》》》》》》》》》》：" + getIpAddr(request));
         return "index";
     }
