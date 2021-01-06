@@ -45,7 +45,9 @@ public class HelloController {
         return ip;
     }
     @RequestMapping("/home")
-    public String home(){
+    public String home(HttpServletRequest request){
+        log.info("请求开始时间》》》》》》》》》》》》》》》》》》》》》》》》：" + LocalDateTime.now());
+        log.info("请求IP 》》》》》》》》》》》》》》》》》》》》》》》》：" + getIpAddr(request));
         return "home";
     }
 
