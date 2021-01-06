@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>666API随机美女视频Demo</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="http://www.666api.cn/js/md5.js"></script>
+</head>
+<body>
+
+<input type="text"size="15" id="url" style="width:350px;height:40px;" class="form-control"  value="www.666api.cn" placeholder="danhao"><input id="cxwl" type="submit" value="点击查询" style="color:red;margin-left:10px;width:100px;height:40px;" />
+<div >
+    <video style="width:414px;height:763px" id="video_mp4" controls="controls" autoplay></video>
+</div>
+
+<script>
+    var user_name="1769122863";
+    var user_key="db120d1030807163522e2a10686f6518";
+    $("#cxwl").click(function(){
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded",
+            url:'http://www.666api.cn/api/token.php',
+            type:'POST',
+            dataType:'json',
+            data:{user_name:user_name},
+            success:function(res){
+                $.ajax({
+                    contentType: "application/x-www-form-urlencoded",
+                    url:'http://www.666api.cn/apidoc/api/ meinv.php',
+                    type:'GET',
+                    dataType:'json',
+                    data:{token_key:hex_md5(user_key+res.token)},
+                    success:function(res){
+                        console.log(res); //请求成功后执行的代码
+                        $("#url").val(res.url);
+                        $("#video_mp4").attr("src",res.url);
+                    }
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

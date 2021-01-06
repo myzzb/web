@@ -16,5 +16,9 @@ public class HelloController {
         return "index";
     }
 
+    @RequestMapping("/home")
+    public String home(){
+        return "home";
+    }
 
 }
