@@ -18,15 +18,13 @@
     var user_key="db120d1030807163522e2a10686f6518";
     $("#cxwl").click(function(){
         $.ajax({
-            contentType: "application/x-www-form-urlencoded",
             url:'http://www.666api.cn/api/token.php',
             type:'POST',
             dataType:'json',
             data:{user_name:user_name},
             success:function(res){
                 $.ajax({
-                    contentType: "application/x-www-form-urlencoded",
-                    url:'http://www.666api.cn/apidoc/api/ meinv.php',
+                    url:'http://www.666api.cn/apidoc/api/meinv.php',
                     type:'GET',
                     dataType:'json',
                     data:{token_key:hex_md5(user_key+res.token)},

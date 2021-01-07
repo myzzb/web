@@ -3,7 +3,9 @@ package com.zzb.web.controller;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
@@ -14,6 +16,7 @@ import java.time.LocalDateTime;
  * @desc :
  */
 @Controller
+@CrossOrigin()
 public class HelloController {
     private final Log log = LogFactory.getLog(HelloController.class);
 
@@ -44,7 +47,8 @@ public class HelloController {
         }
         return ip;
     }
-    @RequestMapping("/home")
+    @CrossOrigin(origins = "http://www.666api.cn/",allowCredentials="true",allowedHeaders = "",methods = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "/home",method = RequestMethod.GET)
     public String home(HttpServletRequest request){
         log.info("请求开始时间》》》》》》》》》》》》》》》》》》》》》》》》：" + LocalDateTime.now());
         log.info("请求IP 》》》》》》》》》》》》》》》》》》》》》》》》：" + getIpAddr(request));
